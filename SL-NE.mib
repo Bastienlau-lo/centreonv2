@@ -1,0 +1,52 @@
+-- *****************************************************************
+-- NOKIA Network Element MIB
+--
+-- Copyright (c) by NOKIA
+-- All rights reserved.
+-- *****************************************************************
+
+SL-NE-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	MODULE-IDENTITY, OBJECT-TYPE,
+	enterprises, NOTIFICATION-TYPE 		FROM SNMPv2-SMI
+	DisplayString, TruthValue	  		FROM SNMPv2-TC
+	MODULE-COMPLIANCE, OBJECT-GROUP,
+	NOTIFICATION-GROUP                  FROM SNMPv2-CONF
+	InterfaceIndex		               	FROM IF-MIB;
+
+
+nokiaextension MODULE-IDENTITY
+	LAST-UPDATED "200009260000Z"
+	ORGANIZATION "NOKIA"
+	CONTACT-INFO
+		"jeff.donnelly@nokia.com"
+	DESCRIPTION
+		"The MIB module is the root of the nokia extension mibs."
+	::= { enterprises 51450 }
+
+sitelight 		OBJECT IDENTIFIER ::= { nokiaextension 1 }
+nokiaproduct 	OBJECT IDENTIFIER ::= { nokiaextension 100 }
+
+-- Values for the sysObjectId
+
+wlne 		OBJECT IDENTIFIER ::= { nokiaproduct 1 }  
+
+wl1000r 	OBJECT IDENTIFIER ::= { wlne 1000 }  	-- wl-1000 Root
+wl1000il	OBJECT IDENTIFIER ::= { wl1000r 7 }  	-- WaveLite-ILA  
+
+wl20r 		OBJECT IDENTIFIER ::= { wlne 2000 }  	-- wl-20 Root
+wl20  		OBJECT IDENTIFIER ::= { wl20r 1 }  		-- WaveLite-20ME 
+
+wl2000ar 	OBJECT IDENTIFIER ::= { wlne 2400 }  	-- wl Root
+wl2000ma  	OBJECT IDENTIFIER ::= { wl2000ar 3 }  	-- WaveLite (2x100G QSFP28)
+
+wl2000br 	OBJECT IDENTIFIER ::= { wlne 2500 }  	-- wl-2000B Root
+wl2000me  	OBJECT IDENTIFIER ::= { wl2000br 1 }  	-- WaveLite-200ME, WaveLite-200MES (1x200G QAM16)
+
+
+-- The root for the service mibs
+
+slService 	OBJECT IDENTIFIER ::= { sitelight 1 }
+
+END

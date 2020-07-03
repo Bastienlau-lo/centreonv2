@@ -1,0 +1,105 @@
+SL-TRAP-MIB DEFINITIONS ::= BEGIN
+IMPORTS
+	slAlarmIfIndex,
+    slAlarmType, 
+	slAlarmSeverity, 
+	slAlarmServiceAffect,
+    slAlarmActive FROM SL-ALARM-MIB
+	slTestsIfLoopIfIndex, 
+	slTestsIfLoopType, 
+	slTestsTrapsLoopbackActive FROM SL-TESTS-MIB
+	optApsConfigUserWorkingIndex, 
+	optApsConfigActiveConnectionRx FROM SL-OPT-APS-MIB
+	slEventIfIndex,
+    slEventType,
+    slEventVal,
+    slEventUser, 
+	slGenEventIfIndex,
+    slGenEventType,
+    slGenEventVal,
+    slGenEventUser,
+    slEventInventoryIfIndex,
+    slEventInventoryAction,
+    slEventInventoryType,
+    slEventInventorySerial,
+    slEventInventoryPartnum FROM SL-EVENT-MIB
+	edfaIfIndex,
+	edfaStatus,
+	edfaOperControlMode FROM SL-EDFA-MIB
+	nokiaextension FROM SL-NE-MIB;
+
+
+slAlarmTrapV1 TRAP-TYPE
+	ENTERPRISE nokiaextension
+	VARIABLES {slAlarmIfIndex,
+       		   slAlarmType, 
+       		   slAlarmSeverity, 
+       		   slAlarmServiceAffect,
+       		   slAlarmActive }
+	DESCRIPTION "SNMPv1 trap equivalent definition"
+	::= 101
+
+slTestsTrapsLoopbackTableChangedV1 TRAP-TYPE
+	ENTERPRISE nokiaextension
+	VARIABLES {
+		slTestsIfLoopIfIndex, 
+		slTestsIfLoopType, 
+		slTestsTrapsLoopbackActive }
+	DESCRIPTION "SNMPv1 trap equivalent definition"
+	::= 122
+
+edfaStatusChangeV1 TRAP-TYPE
+	ENTERPRISE nokiaextension
+	VARIABLES {
+		edfaIfIndex,
+		edfaStatus }
+	DESCRIPTION "SNMPv1 trap equivalent definition"
+	::= 128
+
+edfaControlModeChangeV1 TRAP-TYPE
+	ENTERPRISE nokiaextension
+	VARIABLES {
+		edfaIfIndex,
+		edfaOperControlMode }
+	DESCRIPTION "SNMPv1 trap equivalent definition"
+	::= 129
+
+optApsTrapSwitchoverV1 TRAP-TYPE
+	ENTERPRISE nokiaextension
+	VARIABLES {
+		optApsConfigUserWorkingIndex, 
+		optApsConfigActiveConnectionRx }
+	DESCRIPTION "SNMPv1 trap equivalent definition"
+	::= 130
+
+slEventTrapV1 TRAP-TYPE
+	ENTERPRISE nokiaextension
+	VARIABLES {
+		slEventIfIndex,
+       	slEventType,
+       	slEventVal,
+       	slEventUser }
+	DESCRIPTION "SNMPv1 trap equivalent definition"
+	::= 131
+
+slEventInventoryTrapV1 TRAP-TYPE
+	ENTERPRISE nokiaextension
+    VARIABLES {	slEventInventoryIfIndex,
+       			slEventInventoryAction,
+       			slEventInventoryType,
+       			slEventInventorySerial,
+       			slEventInventoryPartnum }
+	DESCRIPTION "SNMPv1 trap equivalent definition"
+	::= 133
+
+slGenEventTrapV1 TRAP-TYPE
+	ENTERPRISE nokiaextension
+	VARIABLES {
+		slGenEventIfIndex,
+       	slGenEventType,
+       	slGenEventVal,
+       	slGenEventUser }
+	DESCRIPTION "SNMPv1 trap equivalent definition"
+	::= 134
+
+END
